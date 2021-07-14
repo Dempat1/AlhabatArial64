@@ -1,0 +1,16 @@
+{
+  "group": "arabicarialtile",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "arabicarialtile:pure"
+    },
+    {
+      "item": "arabicarialtile:milanesa"
+    }
+  ],
+  "result": {
+    "item": "arabicarialtile:milanesa_con_pure",
+    "count": 1
+  }
+}

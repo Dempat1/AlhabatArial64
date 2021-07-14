@@ -1,0 +1,23 @@
+{
+  "group": "arabicarialtile",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "01",
+    " 3"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:potato"
+    },
+    "1": {
+      "item": "arabicarialtile:agua_hervida_i"
+    },
+    "3": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "result": {
+    "item": "arabicarialtile:pure",
+    "count": 1
+  }
+}

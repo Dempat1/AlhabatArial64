@@ -1,0 +1,19 @@
+{
+  "group": "arabicarialtile",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "arabicarialtile:panrallado"
+    },
+    {
+      "item": "minecraft:beef"
+    }
+  ],
+  "result": {
+    "item": "arabicarialtile:milanesacruda",
+    "count": 1
+  }
+}

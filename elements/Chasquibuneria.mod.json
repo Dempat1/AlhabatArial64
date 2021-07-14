@@ -1,0 +1,21 @@
+{
+  "_fv": 18,
+  "_type": "enchantment",
+  "definition": {
+    "name": "Chasquibuneria",
+    "type": "BOW",
+    "rarity": "VERY_RARE",
+    "minLevel": 30,
+    "maxLevel": 30,
+    "damageModifier": 0,
+    "compatibleEnchantments": [],
+    "compatibleItems": [
+      {
+        "value": "Items.BOW"
+      }
+    ],
+    "isTreasureEnchantment": true,
+    "isCurse": true,
+    "isAllowedOnBooks": true
+  }
+}

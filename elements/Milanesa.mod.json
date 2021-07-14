@@ -1,0 +1,28 @@
+{
+  "_fv": 18,
+  "_type": "food",
+  "definition": {
+    "renderType": 0,
+    "texture": "milanga",
+    "customModelName": "Normal",
+    "name": "Milanesa",
+    "rarity": "RARE",
+    "specialInfo": [
+      "*No estaría mal acompañarla con puré*"
+    ],
+    "creativeTab": {
+      "value": "FOOD"
+    },
+    "stackSize": 8,
+    "nutritionalValue": 12,
+    "saturation": 1.0,
+    "eatingSpeed": 32,
+    "resultItem": {
+      "value": ""
+    },
+    "forDogs": false,
+    "isAlwaysEdible": false,
+    "animation": "eat",
+    "hasGlow": false
+  }
+}

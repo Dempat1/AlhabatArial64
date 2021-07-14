@@ -1,0 +1,28 @@
+{
+  "_fv": 18,
+  "_type": "food",
+  "definition": {
+    "renderType": 0,
+    "texture": "milangaypuref",
+    "customModelName": "Normal",
+    "name": "Milanesa Con Puré",
+    "rarity": "EPIC",
+    "specialInfo": [
+      "*Puede que el pico alimenticio de este mundo*"
+    ],
+    "creativeTab": {
+      "value": "FOOD"
+    },
+    "stackSize": 2,
+    "nutritionalValue": 32,
+    "saturation": 10.0,
+    "eatingSpeed": 32,
+    "resultItem": {
+      "value": ""
+    },
+    "forDogs": false,
+    "isAlwaysEdible": false,
+    "animation": "eat",
+    "hasGlow": false
+  }
+}

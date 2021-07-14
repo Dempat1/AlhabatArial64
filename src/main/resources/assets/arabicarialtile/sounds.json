@@ -1,0 +1,65 @@
+{
+  "fiumba": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "arabicarialtile:fiumba",
+        "stream": false
+      }
+    ]
+  },
+  "tevoyachassquibunear": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "arabicarialtile:te_voy_a_chasquibunear",
+        "stream": false
+      }
+    ]
+  },
+  "palchasqui": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "arabicarialtile:pal_chasqui",
+        "stream": false
+      }
+    ]
+  },
+  "lucamuerto": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "arabicarialtile:luca_muerto_1",
+        "stream": false
+      }
+    ]
+  },
+  "fiumbagaspi": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "arabicarialtile:fiumba2",
+        "stream": false
+      }
+    ]
+  },
+  "insertcoin": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "arabicarialtile:insert_coin",
+        "stream": false
+      }
+    ]
+  },
+  "buenas": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "arabicarialtile:buenas1",
+        "stream": false
+      }
+    ]
+  }
+}

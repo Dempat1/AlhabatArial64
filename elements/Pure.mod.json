@@ -1,0 +1,28 @@
+{
+  "_fv": 18,
+  "_type": "food",
+  "definition": {
+    "renderType": 0,
+    "texture": "pure1",
+    "customModelName": "Normal",
+    "name": "Puré",
+    "rarity": "UNCOMMON",
+    "specialInfo": [
+      "*Una cuspide alimenticia!*"
+    ],
+    "creativeTab": {
+      "value": "FOOD"
+    },
+    "stackSize": 32,
+    "nutritionalValue": 6,
+    "saturation": 0.9,
+    "eatingSpeed": 32,
+    "resultItem": {
+      "value": ""
+    },
+    "forDogs": false,
+    "isAlwaysEdible": false,
+    "animation": "eat",
+    "hasGlow": false
+  }
+}

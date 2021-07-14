@@ -1,0 +1,16 @@
+{
+  "group": "arabicarialtile",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "minecraft:shears"
+    }
+  ],
+  "result": {
+    "item": "arabicarialtile:panrallado",
+    "count": 8
+  }
+}
