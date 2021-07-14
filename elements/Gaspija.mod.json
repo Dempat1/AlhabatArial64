@@ -3,11 +3,11 @@
   "_type": "gun",
   "definition": {
     "renderType": 0,
-    "texture": "pene",
+    "texture": "llave",
     "customModelName": "Normal",
-    "name": "Gaspija",
+    "name": "Lanza Chasqui",
     "specialInfo": [
-      "*Destructor de malass*"
+      "*Destructor de malas*"
     ],
     "creativeTab": {
       "value": "COMBAT"
@@ -16,22 +16,25 @@
     "ammoItem": {
       "value": "Items.TOTEM_OF_UNDYING"
     },
-    "shootConstantly": true,
-    "usageCount": 100,
+    "shootConstantly": false,
+    "usageCount": 1,
     "actionSound": {
-      "value": "CUSTOM:tevoyachassquibunear"
+      "value": "ambient.basalt_deltas.loop"
     },
-    "hasGlow": false,
-    "animation": "bow",
+    "hasGlow": true,
+    "animation": "spear",
     "enableMeleeDamage": false,
     "damageVsEntity": 30.0,
+    "onRangedItemUsed": {
+      "name": "GodDamage"
+    },
     "bulletPower": 100.0,
     "bulletDamage": 5.0,
     "bulletKnockback": 5,
     "bulletParticles": true,
-    "bulletIgnitesFire": false,
+    "bulletIgnitesFire": true,
     "bulletItemTexture": {
-      "value": "Blocks.TRIPWIRE_HOOK"
+      "value": "CUSTOM:Gaspija"
     },
     "bulletModel": "Default",
     "customBulletModelTexture": "",

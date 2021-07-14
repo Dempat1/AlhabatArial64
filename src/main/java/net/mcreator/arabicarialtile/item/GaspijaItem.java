@@ -34,8 +34,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.Entity;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.block.Blocks;
 
+import net.mcreator.arabicarialtile.procedures.GodDamageProcedure;
 import net.mcreator.arabicarialtile.procedures.GaspijaBulletHitsLivingEntityProcedure;
 import net.mcreator.arabicarialtile.entity.renderer.GaspijaRenderer;
 import net.mcreator.arabicarialtile.ArabicarialtileModElements;
@@ -64,7 +64,7 @@ public class GaspijaItem extends ArabicarialtileModElements.ModElement {
 	}
 	public static class ItemRanged extends Item {
 		public ItemRanged() {
-			super(new Item.Properties().group(ItemGroup.COMBAT).maxDamage(100));
+			super(new Item.Properties().group(ItemGroup.COMBAT).maxDamage(1));
 			setRegistryName("gaspija");
 		}
 
@@ -77,12 +77,12 @@ public class GaspijaItem extends ArabicarialtileModElements.ModElement {
 		@Override
 		public void addInformation(ItemStack itemstack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 			super.addInformation(itemstack, world, list, flag);
-			list.add(new StringTextComponent("*Destructor de malass*"));
+			list.add(new StringTextComponent("*Destructor de malas*"));
 		}
 
 		@Override
 		public UseAction getUseAction(ItemStack itemstack) {
-			return UseAction.BOW;
+			return UseAction.SPEAR;
 		}
 
 		@Override
@@ -91,8 +91,13 @@ public class GaspijaItem extends ArabicarialtileModElements.ModElement {
 		}
 
 		@Override
-		public void onUsingTick(ItemStack itemstack, LivingEntity entityLiving, int count) {
-			World world = entityLiving.world;
+		@OnlyIn(Dist.CLIENT)
+		public boolean hasEffect(ItemStack itemstack) {
+			return true;
+		}
+
+		@Override
+		public void onPlayerStoppedUsing(ItemStack itemstack, World world, LivingEntity entityLiving, int timeLeft) {
 			if (!world.isRemote && entityLiving instanceof ServerPlayerEntity) {
 				ServerPlayerEntity entity = (ServerPlayerEntity) entityLiving;
 				double x = entity.getPosX();
@@ -129,8 +134,13 @@ public class GaspijaItem extends ArabicarialtileModElements.ModElement {
 									entity.inventory.deleteStack(stack);
 							}
 						}
+						{
+							Map<String, Object> $_dependencies = new HashMap<>();
+							$_dependencies.put("entity", entity);
+							$_dependencies.put("world", world);
+							GodDamageProcedure.executeProcedure($_dependencies);
+						}
 					}
-					entity.stopActiveHand();
 				}
 			}
 		}
@@ -162,7 +172,7 @@ public class GaspijaItem extends ArabicarialtileModElements.ModElement {
 		@Override
 		@OnlyIn(Dist.CLIENT)
 		public ItemStack getItem() {
-			return new ItemStack(Blocks.TRIPWIRE_HOOK, (int) (1));
+			return new ItemStack(GaspijaItem.block, (int) (1));
 		}
 
 		@Override
@@ -182,9 +192,6 @@ public class GaspijaItem extends ArabicarialtileModElements.ModElement {
 			{
 				Map<String, Object> $_dependencies = new HashMap<>();
 				$_dependencies.put("entity", entity);
-				$_dependencies.put("x", x);
-				$_dependencies.put("y", y);
-				$_dependencies.put("z", z);
 				$_dependencies.put("world", world);
 				GaspijaBulletHitsLivingEntityProcedure.executeProcedure($_dependencies);
 			}
@@ -210,12 +217,13 @@ public class GaspijaItem extends ArabicarialtileModElements.ModElement {
 		entityarrow.setIsCritical(true);
 		entityarrow.setDamage(damage);
 		entityarrow.setKnockbackStrength(knockback);
+		entityarrow.setFire(100);
 		world.addEntity(entityarrow);
 		double x = entity.getPosX();
 		double y = entity.getPosY();
 		double z = entity.getPosZ();
 		world.playSound((PlayerEntity) null, (double) x, (double) y, (double) z,
-				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("arabicarialtile:tevoyachassquibunear")),
+				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("ambient.basalt_deltas.loop")),
 				SoundCategory.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
 		return entityarrow;
 	}
@@ -230,12 +238,13 @@ public class GaspijaItem extends ArabicarialtileModElements.ModElement {
 		entityarrow.setDamage(5);
 		entityarrow.setKnockbackStrength(5);
 		entityarrow.setIsCritical(true);
+		entityarrow.setFire(100);
 		entity.world.addEntity(entityarrow);
 		double x = entity.getPosX();
 		double y = entity.getPosY();
 		double z = entity.getPosZ();
 		entity.world.playSound((PlayerEntity) null, (double) x, (double) y, (double) z,
-				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("arabicarialtile:tevoyachassquibunear")),
+				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("ambient.basalt_deltas.loop")),
 				SoundCategory.PLAYERS, 1, 1f / (new Random().nextFloat() * 0.5f + 1));
 		return entityarrow;
 	}

@@ -22,13 +22,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Item;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.passive.CowEntity;
+import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
+import net.minecraft.entity.ai.goal.LeapAtTargetGoal;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.BreakDoorGoal;
 import net.minecraft.entity.ai.goal.BreakBlockGoal;
@@ -69,9 +70,11 @@ public class LucaEntity extends ArabicarialtileModElements.ModElement {
 		boolean biomeCriteria = false;
 		if (new ResourceLocation("plains").equals(event.getName()))
 			biomeCriteria = true;
+		if (new ResourceLocation("forest").equals(event.getName()))
+			biomeCriteria = true;
 		if (!biomeCriteria)
 			return;
-		event.getSpawns().getSpawner(EntityClassification.AMBIENT).add(new MobSpawnInfo.Spawners(entity, 20, 1, 4));
+		event.getSpawns().getSpawner(EntityClassification.AMBIENT).add(new MobSpawnInfo.Spawners(entity, 4, 1, 4));
 	}
 
 	@Override
@@ -88,11 +91,12 @@ public class LucaEntity extends ArabicarialtileModElements.ModElement {
 			ammma = ammma.createMutableAttribute(Attributes.ARMOR, 0);
 			ammma = ammma.createMutableAttribute(Attributes.ATTACK_DAMAGE, 12);
 			ammma = ammma.createMutableAttribute(Attributes.ATTACK_KNOCKBACK, 2);
+			ammma = ammma.createMutableAttribute(Attributes.ZOMBIE_SPAWN_REINFORCEMENTS);
 			event.put(entity, ammma.create());
 		}
 	}
 
-	public static class CustomEntity extends WolfEntity {
+	public static class CustomEntity extends ZombieEntity {
 		public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
 			this(entity, world);
 		}
@@ -112,15 +116,16 @@ public class LucaEntity extends ArabicarialtileModElements.ModElement {
 		@Override
 		protected void registerGoals() {
 			super.registerGoals();
-			this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, true));
-			this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, CowEntity.class, true, true));
-			this.goalSelector.addGoal(3, new RandomWalkingGoal(this, 1));
-			this.targetSelector.addGoal(4, new HurtByTargetGoal(this));
-			this.goalSelector.addGoal(5, new BreakBlockGoal(Blocks.STONE.getDefaultState().getBlock(), this, 1, (int) 3));
-			this.goalSelector.addGoal(6, new BreakBlockGoal(Blocks.OAK_LOG.getDefaultState().getBlock(), this, 1, (int) 3));
-			this.goalSelector.addGoal(7, new BreakDoorGoal(this, e -> true));
-			this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-			this.goalSelector.addGoal(9, new SwimGoal(this));
+			this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setCallsForHelp(this.getClass()));
+			this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2, true));
+			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, CowEntity.class, true, true));
+			this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, (float) 0.5));
+			this.goalSelector.addGoal(5, new RandomWalkingGoal(this, 1));
+			this.goalSelector.addGoal(6, new BreakBlockGoal(Blocks.STONE.getDefaultState().getBlock(), this, 1, (int) 10));
+			this.goalSelector.addGoal(7, new BreakBlockGoal(Blocks.OAK_LOG.getDefaultState().getBlock(), this, 1, (int) 10));
+			this.goalSelector.addGoal(8, new BreakDoorGoal(this, e -> true));
+			this.goalSelector.addGoal(9, new LookRandomlyGoal(this));
+			this.goalSelector.addGoal(10, new SwimGoal(this));
 		}
 
 		@Override

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "arabicarialtile:items/pene"
+    "layer0": "arabicarialtile:items/llave"
   },
   "display": {
     "thirdperson_righthand": {
